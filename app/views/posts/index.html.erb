@@ -1,0 +1,13 @@
+
+<% @posts.each do |post| %>
+
+<% if post.thumbnail.attached? %>
+<%= image_tag(post.thumbnail, width:300) %>
+<% else %>
+<%= image_tag('notthumbnail.webp', width:300) %>
+<%end%>
+
+<h3><%= post.title %></h3>
+<p><%= post.body %></p>
+
+<% end %>
