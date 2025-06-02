@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-   before_action :find_params, only:[:show, :edit, :update,:destroy]
+   before_action :find_params, only: [ :show, :edit, :update, :destroy ]
  def index
-    @posts = Post.all   
+    @posts = Post.all
  end
 
  def new
@@ -14,31 +14,27 @@ class PostsController < ApplicationController
       flash[:notice] = "Post created successfully"
      redirect_to @post
    else
-     render 'new'
- end
+     render "new"
+   end
 end
 
 def show
-  
 end
 
 def edit
-   
 end
 
 def update
-
    if @post.update(post_inputs)
       flash[:notice] = "Post updated successfully"
       redirect_to @post
-      else
-         render 'edit'
+   else
+         render "edit"
    end
 end
 
 
  def destroy
-
    @post.destroy
    flash[:notice] = "Post deleted successfully"
    redirect_to posts_path
@@ -54,5 +50,4 @@ end
 def post_inputs
    params.require(:post).permit(:title, :body, :thumbnail)
 end
- 
 end
